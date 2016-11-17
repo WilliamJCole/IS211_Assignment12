@@ -1,0 +1,20 @@
+{% block body %}
+  {% if session.logged_in %}
+  {% endif %}
+  <a href="/dashboard">Dashboard</a>&nbsp
+  <a href="/student/add">Add Student</a>&nbsp<a href="/quiz/add">Add Quiz</a>&nbsp<a href="/results/add">Add Quiz Results</a>&nbsp
+  <a href="/logout">Logout</a>
+  <h2>Student Details</h2>
+  <table border="1" style="width:100%">
+      {% if student[0].subject  %}
+      <tr><td><b>First Name</b></td><td><b>Last Name</b></td><td><b>Subject</b></td><td><b>Num. Questions</b></td><td><b>Date</b></td><td><b>Score</b></tr>
+      {% endif %}
+    {% for col in student %}
+      {% if col.subject is not none %}
+        <tr><td>{{ col.fname }}</td><td>{{ col.lname }}</td><td>{{ col.subject }}<td>{{ col.questions }}</td><td>{{ col.date }}</td><td>{{ col.score }}</td>
+      {% else %}
+        No records found for this student ({{ col.fname }}&nbsp{{ col.lname }}).<p>
+      {% endif %}
+    {% endfor %}
+  </table>
+{% endblock %}

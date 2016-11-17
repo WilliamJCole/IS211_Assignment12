@@ -1,0 +1,18 @@
+{% block body %}
+  {% if session.logged_in %}
+  {% endif %}
+  <a href="/dashboard">Dashboard</a>&nbsp
+  <a href="/student/add">Add Student</a>&nbsp<a href="/quiz/add">Add Quiz</a>&nbsp<a href="/results/add">Add Quiz Results</a>&nbsp
+  <a href="/logout">Logout</a>
+  <p>
+  <h2>Add a Quiz</h2>
+  <form action="/quiz/insert" method="post">
+      <label for="subject">Subject:</label>
+      <input type="text" name="subject"></input>
+      <label for="questions">questions:</label>
+      <input type="text" name="questions"></input>
+      <label for="date">Date:</label>
+      <input type="text" name="date"></input>
+      <input type="submit" value="Save"></input>
+    </form>
+{% endblock %}

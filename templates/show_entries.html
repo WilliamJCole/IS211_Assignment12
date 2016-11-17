@@ -1,0 +1,21 @@
+{% block body %}
+  {% if session.logged_in %}
+  {% endif %}
+  <a href="/student/add">Add Student</a>&nbsp<a href="/quiz/add">Add Quiz</a>&nbsp<a href="/results/add">Add Quiz Results</a>&nbsp
+  <a href="/logout">Logout</a>
+  <p>
+  <h2>Current Student</h2>
+  <table border="1" style="width:100%">
+    <tr><td><b>Student ID</b></td><td><b>First Name</b></td><td><b>Last Name</b></td></tr>
+    {% for student in students %}
+      <tr><td><a href="/student/{{ student.ID }}">{{ student.ID }}</a></td><td>{{ student.fname }}</td><td>{{ student.lname }}
+    {% endfor %}
+  </table>
+  <h2>Quizzes</h2>
+  <table border="1" style="width:100%">
+    <tr><td><b>Quizz ID</td><td><b>Subject</b></td><td><b>Questions</b></td><td><b>Date Administered</b></td></tr>
+    {% for quiz in quizzes %}
+      <tr><td>{{ quiz.ID }}</td><td>{{ quiz.subject }}</td><td>{{ quiz.questions }}</td><td>{{ quiz.date }}</td></tr>
+    {% endfor %}
+  </table>
+{% endblock %}

@@ -1,0 +1,30 @@
+{% block body %}
+  {% if session.logged_in %}
+  {% endif %}
+  <a href="/dashboard">Dashboard</a>
+  <p>
+  <h2>Add Scores</h2>
+  <form action="/results/insert" method="post">
+    <div class="dropdown">
+        <label for="menu1">Student:</label>
+        <select class="form-control" id="dropdownMenu1" name="student">
+          {% for student in students %}
+          <option value="{{ student.ID }}">{{ student.fname }}&nbsp{{ student.lname }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    <p>
+    <div class="dropdown">
+        <label for="menu2">Quiz:</label>
+        <select class="form-control" id="dropdownMenu1" name="quiz">
+          {% for quiz in quizzes %}
+          <option value="{{ quiz.ID }}">{{ quiz.subject}}</option>
+          {% endfor %}
+        </select>
+      </div>
+    <p>
+    <label for="score">Score:</label>
+    <input type="text" name="score"></input>
+    <input type="submit" value="Save"></input>
+  </form>
+{% endblock %}
